@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8374153095203479666, guid: f3de46b635b2f3b48b37c9d70f0e6cf8, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1588930176}
     - target: {fileID: 8374153095203479667, guid: f3de46b635b2f3b48b37c9d70f0e6cf8, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -180,6 +184,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3de46b635b2f3b48b37c9d70f0e6cf8, type: 3}
+--- !u!114 &1588930176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4608879029336375826, guid: 3e4dd043f56198040822429c01a7396f, type: 3}
+  m_PrefabInstance: {fileID: 1964054308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42c0783dcf2dbf419ec2b2a422678c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1873072150
 PrefabInstance:
   m_ObjectHideFlags: 0
