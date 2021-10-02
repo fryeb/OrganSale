@@ -4,6 +4,7 @@ using UnityEngine;
 public class Config : ScriptableObject
 {
     public float MovementSpeed = 16;
+    public float SaleDistance = 64;
 
     public int BrainPrice = 100;
     public int HeartPrice = 100;
