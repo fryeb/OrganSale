@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
         }
         Debug.Assert(closestPlayer != null);
 
-        Debug.Log($"distance: {distanceToClosestPlayer}");
         if (distanceToClosestPlayer > config.SaleDistance) return; // Don't sell organs if there is no-one near
 
         if (hasBrain && closestPlayer.WantsBrain()) {
