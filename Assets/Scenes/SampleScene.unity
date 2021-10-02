@@ -350,7 +350,6 @@ GameObject:
   - component: {fileID: 195304781}
   - component: {fileID: 195304780}
   - component: {fileID: 195304779}
-  - component: {fileID: 195304783}
   - component: {fileID: 195304782}
   m_Layer: 0
   m_Name: Camera
@@ -459,19 +458,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &195304783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195304778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df7dad82f5ac7fe489ec6e1676511ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraFollowSpeed: 1
 --- !u!1 &216255691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,6 +1824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1637467225}
   - component: {fileID: 1637467224}
+  - component: {fileID: 1637467226}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -1895,6 +1882,18 @@ Transform:
   m_Father: {fileID: 195304781}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1637467226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637467223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7dad82f5ac7fe489ec6e1676511ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1678209007
 GameObject:
   m_ObjectHideFlags: 0
