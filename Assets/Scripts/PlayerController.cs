@@ -20,14 +20,19 @@ public class PlayerController : MonoBehaviour
     {
         m_Transform = GetComponent<Transform>();
         m_Rigidbody = GetComponent<Rigidbody2D>();
+        Debug.Assert(m_Rigidbody.freezeRotation == true);
+        Debug.Assert(m_Rigidbody.gravityScale == 0.0);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector2 position = m_Transform.position;
-        float speed = GameManager.instance.config.MovementSpeed;
-        m_Rigidbody.MovePosition(position + Time.fixedDeltaTime * speed * input);
+        bool isPlayer = GameManager.instance.player == this;
+        if (isPlayer) {
+            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Vector2 position = m_Transform.position;
+            float speed = GameManager.instance.config.MovementSpeed;
+            m_Rigidbody.MovePosition(position + Time.fixedDeltaTime * speed * input);
+        }
     }
 }
