@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
 
         // TODO: Bleeding
 
-
         // Only player logic from here on
         if (!isPlayer) return;
 
