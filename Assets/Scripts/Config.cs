@@ -33,4 +33,10 @@ public class Config : ScriptableObject
     public Sprite SpleenSprite;
     public Sprite NoSpleenSprite;
 
+    void OnValidate()
+    {
+        Debug.Log("Validating config.");
+        // TODO: Implement checks
+    }
+
 }
