@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
     public bool isAlive = true;
     public bool hasHeart = true;
     public bool hasLungs = true;
-    public bool hasLKidney = true;
-    public bool hasRKidney = true;
+    public bool hasLeftKidney = true;
+    public bool hasRightKidney = true;
     public bool hasSpleen = true;
     public int money = 1000;
     public double blood = 100;

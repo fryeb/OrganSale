@@ -19,4 +19,18 @@ public class Config : ScriptableObject
     public double LeftKidneyBleed = 1;
     public double RightKidneyBleed = 1;
     public double SpleenBleed = 1;
+
+    public Sprite BrainSprite;
+    public Sprite NoBrainSprite;
+    public Sprite HeartSprite;
+    public Sprite NoHeartSprite;
+    public Sprite LungSprite;
+    public Sprite NoLungSprite;
+    public Sprite LeftKidneySprite;
+    public Sprite NoLeftKidneySprite;
+    public Sprite RightKidneySprite;
+    public Sprite NoRightKidneySprite;
+    public Sprite SpleenSprite;
+    public Sprite NoSpleenSprite;
+
 }
