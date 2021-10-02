@@ -20,12 +20,13 @@ MonoBehaviour:
   LeftKidneyPrice: 100
   RightKidneyPrice: 100
   SpleenPrice: 100
+  BleedDelay: 1
   MaxBlood: 100
-  BrainBleed: 1
-  HeartBleed: 1
-  LungBleed: 1
-  LeftKidneyBleed: 1
-  RightKidneyBleed: 1
+  BrainBleed: 6
+  HeartBleed: 5
+  LungBleed: 4
+  LeftKidneyBleed: 3
+  RightKidneyBleed: 2
   SpleenBleed: 1
   BrainSprite: {fileID: 21300000, guid: a95f638dbc632e04cb196cba6e21cdcd, type: 3}
   NoBrainSprite: {fileID: 21300000, guid: fc57141f8ddbeeb4fa26bb82610f5880, type: 3}
