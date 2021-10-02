@@ -15,16 +15,22 @@ public class PlayerController : MonoBehaviour
     private Transform m_Transform;
     private Rigidbody2D m_Rigidbody;
 
-    // Start is called before the first frame update
+    private SpriteRenderer speechBubble;
+    private SpriteRenderer organIcon;
+
     void Start()
     {
         m_Transform = GetComponent<Transform>();
         m_Rigidbody = GetComponent<Rigidbody2D>();
         Debug.Assert(m_Rigidbody.freezeRotation == true);
         Debug.Assert(m_Rigidbody.gravityScale == 0.0);
+
+        Transform speechBubbleTransform = m_Transform.Find("SpeechBubble");
+        speechBubble = speechBubbleTransform.GetComponent<SpriteRenderer>();
+        Transform organIconTransform = speechBubbleTransform.Find("OrganIcon");
+        organIcon = organIconTransform.GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         bool isPlayer = GameManager.instance.player == this;
@@ -34,5 +40,27 @@ public class PlayerController : MonoBehaviour
             float speed = GameManager.instance.config.MovementSpeed;
             m_Rigidbody.MovePosition(position + Time.fixedDeltaTime * speed * input);
         }
+    }
+
+    void Update()
+    {
+        bool isPlayer = GameManager.instance.player == this;
+        Config config = GameManager.instance.config;
+
+        // Update speechBubble & organ icon
+        bool isBubbleVisible = true;
+        if (!isPlayer && !hasHeart)
+            organIcon.sprite = config.HeartSprite;
+        else if (!isPlayer && !hasLungs)
+            organIcon.sprite = config.LungSprite;
+        else if (!isPlayer && !hasLeftKidney)
+            organIcon.sprite = config.LeftKidneySprite;
+        else if (!isPlayer && !hasRightKidney)
+            organIcon.sprite = config.RightKidneySprite;
+        else if (!isPlayer && !hasSpleen)
+            organIcon.sprite = config.SpleenSprite;
+        else
+            isBubbleVisible = false;
+        speechBubble.gameObject.SetActive(isBubbleVisible);
     }
 }
