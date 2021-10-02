@@ -47,3 +47,6 @@ TagManager:
   - name: Thoughts
     uniqueID: 3001794515
     locked: 0
+  - name: Background Details
+    uniqueID: 261687441
+    locked: 0

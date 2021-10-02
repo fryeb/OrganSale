@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4359698387833311603}
   - component: {fileID: 7520032616227291665}
   m_Layer: 31
-  m_Name: Palette
+  m_Name: Road Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
