@@ -41,8 +41,7 @@ public class Config : ScriptableObject
         Debug.AssertFormat(HeartBleed > LungBleed, $"HeartBleed({HeartBleed}) must be greater than LungBleed({LungBleed})");
         Debug.AssertFormat(LungBleed > LeftKidneyBleed, $"LungBleed({LungBleed}) must be greater than LeftKidneyBleed({LeftKidneyBleed})");
         Debug.AssertFormat(LeftKidneyBleed > RightKidneyBleed, $"LeftKidneyBleed({LeftKidneyBleed}) must be greater than RightKidneyBleed({RightKidneyBleed})");
-        Debug.AssertFormat(RightKidneyBleed > SpleenBleed, $"RightKidneyBleed({RightKidneyBleed}) must be greater than RightKidneyBleed({SpleenBleed})");
+        Debug.AssertFormat(RightKidneyBleed > SpleenBleed, $"RightKidneyBleed({RightKidneyBleed}) must be greater than SpleenSprite({SpleenBleed})");
         Debug.AssertFormat(SpleenBleed > 0, $"SpleenBleed({SpleenBleed}) must be greater than 0");
     }
-
 }

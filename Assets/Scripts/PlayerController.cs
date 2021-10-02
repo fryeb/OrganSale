@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
     public bool hasRightKidney = true;
     public bool hasSpleen = true;
     public int money = 1000;
-    public double blood = 100;
+
+    public double blood;
+    public double bleed;
+    private double bloodCountDown;
 
     private Transform m_Transform;
     private Rigidbody2D m_Rigidbody;
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
         Transform organIconTransform = speechBubbleTransform.Find("OrganIcon");
         organIcon = organIconTransform.GetComponent<SpriteRenderer>();
 
+        blood = GameManager.instance.config.MaxBlood;
+        bloodCountDown = GameManager.instance.config.BleedDelay;
         GameManager.instance.players.Add(this);
     }
 
@@ -69,11 +74,25 @@ public class PlayerController : MonoBehaviour
         else isBubbleVisible = false;
         speechBubble.gameObject.SetActive(isBubbleVisible);
 
-
-        // TODO: Bleeding
-
+        // Bleeding
         // Only player logic from here on
         if (!isPlayer) return;
+
+        bloodCountDown -= Time.deltaTime;
+        bleed = 0;
+        if (!hasBrain) bleed += config.BrainBleed;
+        if (!hasHeart) bleed += config.HeartBleed;
+        if (!hasLungs) bleed += config.LungBleed;
+        if (!hasLeftKidney) bleed += config.LeftKidneyBleed;
+        if (!hasRightKidney) bleed += config.RightKidneyBleed;
+        if (!hasSpleen) bleed += config.SpleenBleed;
+
+        if (bloodCountDown <= 0) {
+            bloodCountDown = config.BleedDelay;
+            blood -= bleed;
+        }
+
+        if (blood < 0) isAlive = false;
 
         // Sales
         PlayerController closestPlayer = null;

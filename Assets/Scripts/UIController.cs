@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 
     public TextMeshProUGUI playerName;
     public TextMeshProUGUI playerBalance;
+    public TextMeshProUGUI playerBlood;
     public TextMeshProUGUI message;
     private bool messageWasSet;
 
@@ -32,7 +33,8 @@ public class UIController : MonoBehaviour
         PlayerController player = GameManager.instance.player;
         Config config = GameManager.instance.config;
         playerName.text = player.transform.name;
-        playerBalance.text = "Balance - $" + player.money;
+        playerBalance.text = $"Balance: ${player.money}";
+        playerBlood.text = $"Blood: {player.blood} / ${config.MaxBlood} (-{player.bleed})";
 
         brainImage.sprite = player.isAlive ? config.BrainSprite : config.NoBrainSprite;
         heartImage.sprite = player.hasHeart ? config.HeartSprite : config.NoHeartSprite;
