@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public int money = 1000;
 
     public double blood;
+    public double bleed;
     private double bloodCountDown;
 
     private Transform m_Transform;
@@ -78,18 +79,21 @@ public class PlayerController : MonoBehaviour
         if (!isPlayer) return;
 
         bloodCountDown -= Time.deltaTime;
+        bleed = 0;
+        if (!hasBrain) bleed += config.BrainBleed;
+        if (!hasHeart) bleed += config.HeartBleed;
+        if (!hasLungs) bleed += config.LungBleed;
+        if (!hasLeftKidney) bleed += config.LeftKidneyBleed;
+        if (!hasRightKidney) bleed += config.RightKidneyBleed;
+        if (!hasSpleen) bleed += config.SpleenBleed;
+
         if (bloodCountDown <= 0) {
             bloodCountDown = config.BleedDelay;
-            if (!hasBrain) blood -= config.BrainBleed;
-            if (!hasHeart) blood -= config.HeartBleed;
-            if (!hasLungs) blood -= config.LungBleed;
-            if (!hasLeftKidney) blood -= config.LeftKidneyBleed;
-            if (!hasRightKidney) blood -= config.RightKidneyBleed;
-            if (!hasSpleen) blood -= config.SpleenBleed;
+            blood -= bleed;
         }
 
         if (blood < 0) isAlive = false;
-        
+
         // Sales
         PlayerController closestPlayer = null;
         float distanceToClosestPlayer = Mathf.Infinity;
