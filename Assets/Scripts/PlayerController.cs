@@ -69,9 +69,13 @@ public class PlayerController : MonoBehaviour
         else isBubbleVisible = false;
         speechBubble.gameObject.SetActive(isBubbleVisible);
 
+
+        // TODO: Bleeding
+
         // Only player logic from here on
         if (!isPlayer) return;
 
+        // Sales
         PlayerController closestPlayer = null;
         float distanceToClosestPlayer = Mathf.Infinity;
         Debug.Assert(GameManager.instance.players.Count > 1);
@@ -79,19 +83,27 @@ public class PlayerController : MonoBehaviour
             if (player == this) continue; // Skip ourselves
 
             float distanceToPlayer = Vector2.Distance(m_Transform.position, player.m_Transform.position);
-            if (distanceToPlayer < distanceToClosestPlayer)
+            if (distanceToPlayer < distanceToClosestPlayer) {
                 closestPlayer = player;
+                distanceToClosestPlayer = distanceToPlayer;
+            }
         }
         Debug.Assert(closestPlayer != null);
+
+        if (distanceToClosestPlayer > config.SaleDistance) return; // Don't sell organs if there is no-one near
 
         if (hasBrain && closestPlayer.WantsBrain()) {
             UIController.SetMessage($"Press E to sell Brain to {closestPlayer.name} for ${config.BrainPrice}");
             if (Input.GetKeyDown(KeyCode.E)) {
                 closestPlayer.hasBrain = true;
-                this.hasBrain = false;
+                this.hasBrain = true; // Can't sell brain back to original
                 closestPlayer.money -= config.BrainPrice;
                 this.money += config.BrainPrice;
-                // TODO: Swap active player
+
+                int tempMoney = this.money;
+                this.money = closestPlayer.money;
+                closestPlayer.money = tempMoney;
+                GameManager.instance.player = closestPlayer;
             }
         } else if (hasHeart && closestPlayer.WantsHeart()) {
             UIController.SetMessage($"Press E to sell Heart to {closestPlayer.name} for ${config.HeartPrice}");
@@ -101,7 +113,38 @@ public class PlayerController : MonoBehaviour
                 closestPlayer.money -= config.HeartPrice;
                 this.money += config.HeartPrice;
             }
+        } else if (hasLungs && closestPlayer.WantsLungs()) {
+            UIController.SetMessage($"Press E to sell Lungs to {closestPlayer.name} for ${config.LungPrice}");
+            if (Input.GetKeyDown(KeyCode.E)) {
+                closestPlayer.hasLungs = true;
+                this.hasLungs = false;
+                closestPlayer.money -= config.LungPrice;
+                this.money += config.LungPrice;
+            }
+        } else if (hasLeftKidney && closestPlayer.WantsLeftKidney()) {
+            UIController.SetMessage($"Press E to sell Left Kidney to {closestPlayer.name} for ${config.LeftKidneyPrice}");
+            if (Input.GetKeyDown(KeyCode.E)) {
+                closestPlayer.hasLeftKidney = true;
+                this.hasLeftKidney = false;
+                closestPlayer.money -= config.LeftKidneyPrice;
+                this.money += config.LeftKidneyPrice;
+            }
+        } else if (hasRightKidney && closestPlayer.WantsRightKidney()) {
+            UIController.SetMessage($"Press E to sell Right Kidney to {closestPlayer.name} for ${config.RightKidneyPrice}");
+            if (Input.GetKeyDown(KeyCode.E)) {
+                closestPlayer.hasRightKidney = true;
+                this.hasRightKidney = false;
+                closestPlayer.money -= config.RightKidneyPrice;
+                this.money += config.RightKidneyPrice;
+            }
+        } else if (hasSpleen && closestPlayer.WantsSpleen()) {
+            UIController.SetMessage($"Press E to sell Spleen to {closestPlayer.name} for ${config.SpleenPrice}");
+            if (Input.GetKeyDown(KeyCode.E)) {
+                closestPlayer.hasSpleen = true;
+                this.hasSpleen = false;
+                closestPlayer.money -= config.SpleenPrice;
+                this.money += config.SpleenPrice;
+            }
         }
-
     }
 }
