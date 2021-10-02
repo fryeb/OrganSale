@@ -27,15 +27,15 @@ MonoBehaviour:
   LeftKidneyBleed: 1
   RightKidneyBleed: 1
   SpleenBleed: 1
-  BrainSprite: {fileID: 21300000, guid: 2d34976df0589eb49a8ca9f0ded1d89a, type: 3}
+  BrainSprite: {fileID: 21300000, guid: a95f638dbc632e04cb196cba6e21cdcd, type: 3}
   NoBrainSprite: {fileID: 21300000, guid: fc57141f8ddbeeb4fa26bb82610f5880, type: 3}
-  HeartSprite: {fileID: 21300000, guid: 2d34976df0589eb49a8ca9f0ded1d89a, type: 3}
-  NoHeartSprite: {fileID: 21300000, guid: fc57141f8ddbeeb4fa26bb82610f5880, type: 3}
-  LungSprite: {fileID: 21300000, guid: 2d34976df0589eb49a8ca9f0ded1d89a, type: 3}
-  NoLungSprite: {fileID: 21300000, guid: fc57141f8ddbeeb4fa26bb82610f5880, type: 3}
-  LeftKidneySprite: {fileID: 21300000, guid: 2d34976df0589eb49a8ca9f0ded1d89a, type: 3}
-  NoLeftKidneySprite: {fileID: 21300000, guid: fc57141f8ddbeeb4fa26bb82610f5880, type: 3}
-  RightKidneySprite: {fileID: 21300000, guid: 2d34976df0589eb49a8ca9f0ded1d89a, type: 3}
-  NoRightKidneySprite: {fileID: 21300000, guid: fc57141f8ddbeeb4fa26bb82610f5880, type: 3}
-  SpleenSprite: {fileID: 21300000, guid: 2d34976df0589eb49a8ca9f0ded1d89a, type: 3}
-  NoSpleenSprite: {fileID: 21300000, guid: fc57141f8ddbeeb4fa26bb82610f5880, type: 3}
+  HeartSprite: {fileID: 21300000, guid: f2d4ca5a971589349bb3598f8fa21717, type: 3}
+  NoHeartSprite: {fileID: 21300000, guid: fab74f0067cd10642b5797e7d15c7997, type: 3}
+  LungSprite: {fileID: 21300000, guid: ac448c1a478f280449b94a75bd72c4b8, type: 3}
+  NoLungSprite: {fileID: 21300000, guid: 8bc11bdce26a26e48878392bef82a9fe, type: 3}
+  LeftKidneySprite: {fileID: 21300000, guid: 81120f8b3816de04db6ab787e06367ce, type: 3}
+  NoLeftKidneySprite: {fileID: 21300000, guid: 21baeb0d4d6f75d4086cbace02aad521, type: 3}
+  RightKidneySprite: {fileID: 21300000, guid: d00bab2b075a72a47851ee47056ee357, type: 3}
+  NoRightKidneySprite: {fileID: 21300000, guid: 5aab98ed663daf94c87ac1e13ade64f8, type: 3}
+  SpleenSprite: {fileID: 21300000, guid: 89ddf2094fe19a94480310f25e24051c, type: 3}
+  NoSpleenSprite: {fileID: 21300000, guid: 2f26cd33bbb162745ace40219800e8f1, type: 3}
