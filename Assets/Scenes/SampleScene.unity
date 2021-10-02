@@ -235,6 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45fca1c497d230844b0f427c3f12cc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 2f658f53d0bb31a4884791c414e012ec, type: 2}
+  player: {fileID: 1137581653}
 --- !u!4 &245716628
 Transform:
   m_ObjectHideFlags: 0
@@ -732,7 +734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42c0783dcf2dbf419ec2b2a422678c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
   isAlive: 1
   hasHeart: 1
   hasLungs: 1

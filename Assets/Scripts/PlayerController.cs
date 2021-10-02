@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 1; // Speed in metres(pixels) per second
-    
     public bool isAlive = true;
     public bool hasHeart = true;
     public bool hasLungs = true;
@@ -29,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 position = m_Transform.position;
+        float speed = GameManager.instance.config.MovementSpeed;
         m_Rigidbody.MovePosition(position + Time.fixedDeltaTime * speed * input);
     }
 }
