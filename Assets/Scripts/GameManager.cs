@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,9 +6,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Config config;
     public PlayerController player;
+    public List<PlayerController> players = new List<PlayerController>();
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
             instance = this;
@@ -16,5 +17,7 @@ public class GameManager : MonoBehaviour
 
         if (config == null)
             Debug.LogError("Config cannot be null.");
+
+        players = new List<PlayerController>();
     }
 }
