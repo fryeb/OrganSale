@@ -49,7 +49,7 @@ public class UIController : MonoBehaviour
 
         if (state == GameState.IntroVideo) {
             videoPlayer.gameObject.SetActive(true);
-            if (videoPlayer.isPaused) {
+            if (Input.GetKeyDown(KeyCode.Space) || videoPlayer.isPaused) {
                 GameManager.instance.state = GameState.Main;
             }
         } else if (state == GameState.Main) {
