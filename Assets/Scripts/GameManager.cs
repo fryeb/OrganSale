@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum GameState
 {
-    IntoVideo, // Intro Cutscene
+    IntroVideo, // Intro Cutscene
     Main,
     DeathVideo,
     Dead,

@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Don't update unless in main state
+        if (GameManager.instance.state != GameState.Main) return;
+
         bool isPlayer = GameManager.instance.player == this;
         Config config = GameManager.instance.config;
 
