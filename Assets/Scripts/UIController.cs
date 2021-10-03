@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using TMPro;
 
 public class UIController : MonoBehaviour
@@ -18,6 +19,7 @@ public class UIController : MonoBehaviour
     public Image leftKidneyImage;
     public Image rightKidneyImage;
     public Image spleenImage;
+    public VideoPlayer videoPlayer;
 
     void Awake()
     {
@@ -32,6 +34,8 @@ public class UIController : MonoBehaviour
     {
         PlayerController player = GameManager.instance.player;
         Config config = GameManager.instance.config;
+        GameState state = GameManager.instance.state;
+
         playerName.text = player.transform.name;
         playerBalance.text = $"Balance: ${player.money}";
         playerBlood.text = $"Blood: {player.blood} / ${config.MaxBlood} (-{player.bleed})";
@@ -42,6 +46,15 @@ public class UIController : MonoBehaviour
         leftKidneyImage.sprite = player.hasLeftKidney ? config.LeftKidneySprite : config.NoLeftKidneySprite;
         rightKidneyImage.sprite = player.hasRightKidney ? config.RightKidneySprite : config.NoRightKidneySprite;
         spleenImage.sprite = player.hasSpleen ? config.SpleenSprite : config.NoSpleenSprite;
+
+        if (state == GameState.IntroVideo) {
+            videoPlayer.gameObject.SetActive(true);
+            if (videoPlayer.isPaused) {
+                GameManager.instance.state = GameState.Main;
+            }
+        } else if (state == GameState.Main) {
+            videoPlayer.gameObject.SetActive(false);
+        }
     }
 
     void LateUpdate()
