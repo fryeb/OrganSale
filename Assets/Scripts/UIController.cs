@@ -11,6 +11,9 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI playerBalance;
     public TextMeshProUGUI playerBlood;
     public TextMeshProUGUI message;
+    public GameObject uiPanel;
+    public GameObject deathPanel;
+    public GameObject winPanel;
     private bool messageWasSet;
 
     public Image brainImage;
@@ -27,6 +30,27 @@ public class UIController : MonoBehaviour
             instance = this;
         else
             Debug.LogError("Multiple instances of UIController. There may be only one!!!");
+
+        Debug.Assert(videoPlayer.playOnAwake);
+    }
+
+    void SetPanelsActive(GameState state)
+    {
+        uiPanel.SetActive(state == GameState.Main);
+        deathPanel.SetActive(state == GameState.Dead);
+        winPanel.SetActive(state == GameState.Win);
+    }
+
+    void PlayVideo(VideoClip clip, GameState nextState)
+    {
+        videoPlayer.gameObject.SetActive(true);
+        if (videoPlayer.clip != clip) {
+            videoPlayer.clip = clip;
+            videoPlayer.Play();
+        } else if (Input.GetKeyDown(KeyCode.Space) || videoPlayer.isPaused) {
+            videoPlayer.clip = null;
+            GameManager.instance.state = nextState;
+        }
     }
     
     // Update is called once per frame
@@ -47,13 +71,19 @@ public class UIController : MonoBehaviour
         rightKidneyImage.sprite = player.hasRightKidney ? config.RightKidneySprite : config.NoRightKidneySprite;
         spleenImage.sprite = player.hasSpleen ? config.SpleenSprite : config.NoSpleenSprite;
 
+        SetPanelsActive(state);
+
         if (state == GameState.IntroVideo) {
-            videoPlayer.gameObject.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space) || videoPlayer.isPaused) {
-                GameManager.instance.state = GameState.Main;
-            }
-        } else if (state == GameState.Main) {
+            PlayVideo(config.introVideo, GameState.Main);
+        } else if (state == GameState.DeathVideo) {
+            PlayVideo(config.deathVideo, GameState.Dead);
+        } else if (state == GameState.WinVideo) {
+            PlayVideo(config.winVideo, GameState.Win);
+        }
+
+        if (state == GameState.Dead || state == GameState.Main || state == GameState.Dead) {
             videoPlayer.gameObject.SetActive(false);
+            SetPanelsActive(state);
         }
     }
 

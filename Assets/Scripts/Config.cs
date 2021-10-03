@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 [CreateAssetMenu(fileName="config", menuName="Config", order=1)]
 public class Config : ScriptableObject
@@ -34,6 +35,10 @@ public class Config : ScriptableObject
     public Sprite NoRightKidneySprite;
     public Sprite SpleenSprite;
     public Sprite NoSpleenSprite;
+
+    public VideoClip introVideo;
+    public VideoClip deathVideo;
+    public VideoClip winVideo;
 
     void OnValidate()
     {
