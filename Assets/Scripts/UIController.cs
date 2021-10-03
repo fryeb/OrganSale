@@ -14,8 +14,6 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI playerBlood;
     public TextMeshProUGUI message;
     public GameObject uiPanel;
-    public GameObject deathPanel;
-    public GameObject winPanel;
     private bool messageWasSet;
 
     public Image brainImage;
@@ -42,13 +40,6 @@ public class UIController : MonoBehaviour
     {
         m_AudioSource = GetComponent<AudioSource>();
         Debug.Assert(m_AudioSource.playOnAwake);
-    }
-
-    void SetPanelsActive(GameState state)
-    {
-        uiPanel.SetActive(state == GameState.Main);
-        deathPanel.SetActive(state == GameState.Dead);
-        winPanel.SetActive(state == GameState.Win);
     }
 
     void PlayVideo(VideoClip clip, GameState nextState)
@@ -81,7 +72,8 @@ public class UIController : MonoBehaviour
         rightKidneyImage.sprite = player.hasRightKidney ? config.RightKidneySprite : config.NoRightKidneySprite;
         spleenImage.sprite = player.hasSpleen ? config.SpleenSprite : config.NoSpleenSprite;
 
-        SetPanelsActive(state);
+        videoPlayer.gameObject.SetActive(state != GameState.Main);
+        uiPanel.SetActive(state == GameState.Main);
 
         if (state == GameState.IntroVideo) {
             PlayVideo(config.introVideo, GameState.TitleVideo);
@@ -96,9 +88,10 @@ public class UIController : MonoBehaviour
             PlayVideo(config.winVideo, GameState.Win);
         }
 
-        if (state == GameState.Dead || state == GameState.Main || state == GameState.Dead) {
-            videoPlayer.gameObject.SetActive(false);
-            SetPanelsActive(state);
+        if (state == GameState.Win || state == GameState.Dead) {
+            SetMessage("Press <space> to respawn.");
+            if (Input.GetKeyDown(KeyCode.Space))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         // Music
@@ -126,10 +119,5 @@ public class UIController : MonoBehaviour
     {
         instance.messageWasSet = true;
         instance.message.text = message;
-    }
-
-    public void Respawn()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
