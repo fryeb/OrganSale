@@ -32,4 +32,10 @@ public class GameManager : MonoBehaviour
 
         players = new List<PlayerController>();
     }
+
+    void LateUpdate()
+    {
+        if (state == GameState.Main && !player.isAlive)
+            state = GameState.DeathVideo;
+    }
 }

@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Don't update unless in main state
+        if (GameManager.instance.state != GameState.Main) return;
+
         bool isPlayer = GameManager.instance.player == this;
         if (isPlayer) {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
