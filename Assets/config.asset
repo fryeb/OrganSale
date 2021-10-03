@@ -20,6 +20,7 @@ MonoBehaviour:
   LeftKidneyPrice: 100
   RightKidneyPrice: 100
   SpleenPrice: 100
+  WinPrice: 100
   BleedDelay: 1
   MaxBlood: 100
   BrainBleed: 6
@@ -43,3 +44,5 @@ MonoBehaviour:
   introVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
   deathVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
   winVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
+  saleSFX: {fileID: 8300000, guid: 003b53913bd306545925906859eaae11, type: 3}
+  brainSFX: {fileID: 8300000, guid: 7842c3ef97d351549b0609fba661dc03, type: 3}
