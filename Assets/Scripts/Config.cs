@@ -38,6 +38,7 @@ public class Config : ScriptableObject
     public Sprite NoSpleenSprite;
 
     public VideoClip introVideo;
+    public VideoClip titleVideo;
     public VideoClip deathVideo;
     public VideoClip winVideo;
 

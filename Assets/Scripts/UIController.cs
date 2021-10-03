@@ -84,7 +84,9 @@ public class UIController : MonoBehaviour
         SetPanelsActive(state);
 
         if (state == GameState.IntroVideo) {
-            PlayVideo(config.introVideo, GameState.Main);
+            PlayVideo(config.introVideo, GameState.TitleVideo);
+        } else if (state == GameState.TitleVideo) {
+            PlayVideo(config.titleVideo, GameState.Main);
         } else if (state == GameState.DeathVideo) {
             PlayVideo(config.deathVideo, GameState.Dead);
         } else if (state == GameState.WinVideo) {
