@@ -86,7 +86,10 @@ public class UIController : MonoBehaviour
         if (state == GameState.IntroVideo) {
             PlayVideo(config.introVideo, GameState.TitleVideo);
         } else if (state == GameState.TitleVideo) {
-            PlayVideo(config.titleVideo, GameState.Main);
+            PlayVideo(config.titleVideo, GameState.TitleVideo);
+            SetMessage("Press <space> to start.");
+            if (Input.GetKeyDown(KeyCode.Space))
+                GameManager.instance.state = GameState.Main;
         } else if (state == GameState.DeathVideo) {
             PlayVideo(config.deathVideo, GameState.Dead);
         } else if (state == GameState.WinVideo) {
