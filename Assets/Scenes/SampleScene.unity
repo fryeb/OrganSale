@@ -2135,14 +2135,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2180829722046687916, guid: db9497887c16dcc4f991be4cc1fef2d2, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2180829722046687916, guid: db9497887c16dcc4f991be4cc1fef2d2, type: 3}
-      propertyPath: Priority
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7272529138175841858, guid: db9497887c16dcc4f991be4cc1fef2d2, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2229,10 +2221,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7272529138175841862, guid: db9497887c16dcc4f991be4cc1fef2d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9148752683361379316, guid: db9497887c16dcc4f991be4cc1fef2d2, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
