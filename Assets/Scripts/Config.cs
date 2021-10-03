@@ -41,7 +41,9 @@ public class Config : ScriptableObject
     public VideoClip introVideo;
     public VideoClip titleVideo;
     public VideoClip deathVideo;
+    public VideoClip deathTitleVideo;
     public VideoClip winVideo;
+    public VideoClip winTitleVideo;
 
     public AudioClip saleSFX;
     public AudioClip brainSFX;

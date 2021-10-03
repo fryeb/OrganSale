@@ -86,6 +86,10 @@ public class UIController : MonoBehaviour
             PlayVideo(config.deathVideo, GameState.Dead);
         } else if (state == GameState.WinVideo) {
             PlayVideo(config.winVideo, GameState.Win);
+        } else if (state == GameState.Dead) {
+            PlayVideo(config.deathTitleVideo, GameState.Dead);
+        } else if (state == GameState.Win) {
+            PlayVideo(config.winTitleVideo, GameState.Win);
         }
 
         if (state == GameState.Win || state == GameState.Dead) {
