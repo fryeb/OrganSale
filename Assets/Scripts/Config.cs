@@ -13,6 +13,7 @@ public class Config : ScriptableObject
     public int LeftKidneyPrice = 100;
     public int RightKidneyPrice = 100;
     public int SpleenPrice = 100;
+    public int WinPrice = 100;
 
     public double BleedDelay = 1;
     public double MaxBlood = 100;
