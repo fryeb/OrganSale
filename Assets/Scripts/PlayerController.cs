@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
     public bool isAlive = true;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private Transform m_Transform;
     private Rigidbody2D m_Rigidbody;
+    private AudioSource m_AudioSource;
 
     private SpriteRenderer speechBubble;
     private SpriteRenderer organIcon;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         m_Transform = GetComponent<Transform>();
+        m_AudioSource = GetComponent<AudioSource>();
         m_Rigidbody = GetComponent<Rigidbody2D>();
         Debug.Assert(m_Rigidbody.freezeRotation == true);
         Debug.Assert(m_Rigidbody.gravityScale == 0.0);
@@ -60,6 +63,12 @@ public class PlayerController : MonoBehaviour
     public bool WantsLeftKidney() { return !hasLeftKidney && money > GameManager.instance.config.LeftKidneyPrice; }
     public bool WantsRightKidney() { return !hasRightKidney && money > GameManager.instance.config.RightKidneyPrice; }
     public bool WantsSpleen() { return !hasSpleen && money > GameManager.instance.config.SpleenPrice; }
+
+    void PlaySoundEffect(AudioClip clip) 
+    {
+        m_AudioSource.clip = clip;
+        m_AudioSource.Play();
+    }
 
     void Update()
     {
@@ -129,6 +138,7 @@ public class PlayerController : MonoBehaviour
                 this.money = closestPlayer.money;
                 closestPlayer.money = tempMoney;
                 GameManager.instance.player = closestPlayer;
+                PlaySoundEffect(config.brainSFX);
             }
         } else if (hasHeart && closestPlayer.WantsHeart()) {
             UIController.SetMessage($"Press E to sell Heart to {closestPlayer.name} for ${config.HeartPrice}");
@@ -137,6 +147,7 @@ public class PlayerController : MonoBehaviour
                 this.hasHeart = false;
                 closestPlayer.money -= config.HeartPrice;
                 this.money += config.HeartPrice;
+                PlaySoundEffect(config.saleSFX);
             }
         } else if (hasLungs && closestPlayer.WantsLungs()) {
             UIController.SetMessage($"Press E to sell Lungs to {closestPlayer.name} for ${config.LungPrice}");
@@ -145,6 +156,7 @@ public class PlayerController : MonoBehaviour
                 this.hasLungs = false;
                 closestPlayer.money -= config.LungPrice;
                 this.money += config.LungPrice;
+                PlaySoundEffect(config.saleSFX);
             }
         } else if (hasLeftKidney && closestPlayer.WantsLeftKidney()) {
             UIController.SetMessage($"Press E to sell Left Kidney to {closestPlayer.name} for ${config.LeftKidneyPrice}");
@@ -153,6 +165,7 @@ public class PlayerController : MonoBehaviour
                 this.hasLeftKidney = false;
                 closestPlayer.money -= config.LeftKidneyPrice;
                 this.money += config.LeftKidneyPrice;
+                PlaySoundEffect(config.saleSFX);
             }
         } else if (hasRightKidney && closestPlayer.WantsRightKidney()) {
             UIController.SetMessage($"Press E to sell Right Kidney to {closestPlayer.name} for ${config.RightKidneyPrice}");
@@ -161,6 +174,7 @@ public class PlayerController : MonoBehaviour
                 this.hasRightKidney = false;
                 closestPlayer.money -= config.RightKidneyPrice;
                 this.money += config.RightKidneyPrice;
+                PlaySoundEffect(config.saleSFX);
             }
         } else if (hasSpleen && closestPlayer.WantsSpleen()) {
             UIController.SetMessage($"Press E to sell Spleen to {closestPlayer.name} for ${config.SpleenPrice}");
@@ -170,6 +184,7 @@ public class PlayerController : MonoBehaviour
                 closestPlayer.money -= config.SpleenPrice;
                 this.money += config.SpleenPrice;
             }
+            PlaySoundEffect(config.saleSFX);
         }
     }
 }
