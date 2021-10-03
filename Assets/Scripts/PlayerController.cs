@@ -4,8 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
-    public bool isAlive = true;
-    private bool hasPlayedStartSound = false;
+    public bool isAlive {get; private set;}
+    private bool hasPlayedStartSound = true;
 
     public bool hasBrain = true;
     public bool hasHeart = true;
@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
     public bool hasLeftKidney = true;
     public bool hasRightKidney = true;
     public bool hasSpleen = true;
-    public int money = 1000;
+    public int money {get; private set;}
 
-    public double blood;
-    public double bleed;
+    public double blood {get; private set;}
+    public double bleed {get; private set;}
     private double bloodCountDown;
 
     private Transform m_Transform;
@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
 
         blood = GameManager.instance.config.MaxBlood;
         bloodCountDown = GameManager.instance.config.BleedDelay;
+        money = 0;
+        isAlive = true;
+
         GameManager.instance.players.Add(this);
     }
 
@@ -58,12 +61,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool WantsBrain() { return !hasBrain && money > GameManager.instance.config.BrainPrice; }
-    public bool WantsHeart() { return !hasHeart && money > GameManager.instance.config.HeartPrice; }
-    public bool WantsLungs() { return !hasLungs && money > GameManager.instance.config.LungPrice; }
-    public bool WantsLeftKidney() { return !hasLeftKidney && money > GameManager.instance.config.LeftKidneyPrice; }
-    public bool WantsRightKidney() { return !hasRightKidney && money > GameManager.instance.config.RightKidneyPrice; }
-    public bool WantsSpleen() { return !hasSpleen && money > GameManager.instance.config.SpleenPrice; }
+    public bool WantsBrain() { return !hasBrain; }
+    public bool WantsHeart() { return !hasHeart; }
+    public bool WantsLungs() { return !hasLungs; }
+    public bool WantsLeftKidney() { return !hasLeftKidney; }
+    public bool WantsRightKidney() { return !hasRightKidney; }
+    public bool WantsSpleen() { return !hasSpleen; }
 
     void PlaySoundEffect(AudioClip clip, bool loop=false) 
     {
@@ -94,7 +97,8 @@ public class PlayerController : MonoBehaviour
         // Bleeding
         // Only player logic from here on
         if (!isPlayer) {
-            m_AudioSource.clip = null; // Mute NPCs
+            if (m_AudioSource.clip != config.brainSFX)
+                m_AudioSource.clip = null; // Mute NPCs
             return;
         };
 
