@@ -41,6 +41,9 @@ public class Config : ScriptableObject
     public VideoClip deathVideo;
     public VideoClip winVideo;
 
+    public AudioClip saleSFX;
+    public AudioClip brainSFX;
+
     void OnValidate()
     {
         Debug.AssertFormat(BrainBleed > HeartBleed, $"BrainBleed({BrainBleed}) must be greater than HeartBleed({HeartBleed})");
