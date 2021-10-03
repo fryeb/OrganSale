@@ -40,3 +40,6 @@ MonoBehaviour:
   NoRightKidneySprite: {fileID: 21300000, guid: 5aab98ed663daf94c87ac1e13ade64f8, type: 3}
   SpleenSprite: {fileID: 21300000, guid: 89ddf2094fe19a94480310f25e24051c, type: 3}
   NoSpleenSprite: {fileID: 21300000, guid: 2f26cd33bbb162745ace40219800e8f1, type: 3}
+  introVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
+  deathVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
+  winVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
