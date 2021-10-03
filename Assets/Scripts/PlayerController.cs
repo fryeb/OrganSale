@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool isAlive = true;
+    private bool hasPlayedStartSound = false;
 
     public bool hasBrain = true;
     public bool hasHeart = true;
@@ -64,9 +65,10 @@ public class PlayerController : MonoBehaviour
     public bool WantsRightKidney() { return !hasRightKidney && money > GameManager.instance.config.RightKidneyPrice; }
     public bool WantsSpleen() { return !hasSpleen && money > GameManager.instance.config.SpleenPrice; }
 
-    void PlaySoundEffect(AudioClip clip) 
+    void PlaySoundEffect(AudioClip clip, bool loop=false) 
     {
         m_AudioSource.clip = clip;
+        m_AudioSource.loop = loop;
         m_AudioSource.Play();
     }
 
@@ -91,7 +93,10 @@ public class PlayerController : MonoBehaviour
 
         // Bleeding
         // Only player logic from here on
-        if (!isPlayer) return;
+        if (!isPlayer) {
+            m_AudioSource.clip = null; // Mute NPCs
+            return;
+        };
 
         bloodCountDown -= Time.deltaTime;
         bleed = 0;
@@ -185,6 +190,23 @@ public class PlayerController : MonoBehaviour
                 this.money += config.SpleenPrice;
             }
             PlaySoundEffect(config.saleSFX);
+        }
+
+        // Background Sound Effect
+        bool isWalking = Input.GetAxisRaw("Horizontal") != 0.0 || Input.GetAxisRaw("Vertical") != 0;
+        if (!m_AudioSource.isPlaying) {
+            if (!hasPlayedStartSound) {
+                hasPlayedStartSound = true;
+                PlaySoundEffect(config.playerGameStart, true);
+            } else if (blood < config.BleedSoundThreshold) {
+                PlaySoundEffect(config.playerBleedingOut);
+            } else if (isWalking) {
+                PlaySoundEffect(config.playerFootsteps, true);
+            }
+        }
+
+        if (m_AudioSource.clip == config.playerFootsteps && !isWalking) {
+            m_AudioSource.Stop();
         }
     }
 }

@@ -16,6 +16,7 @@ public class Config : ScriptableObject
     public int WinPrice = 100;
 
     public double BleedDelay = 1;
+    public double BleedSoundThreshold = 10;
     public double MaxBlood = 100;
     public double BrainBleed = 1;
     public double HeartBleed = 1;
@@ -46,6 +47,10 @@ public class Config : ScriptableObject
     public AudioClip brainSFX;
     public AudioClip titleSong;
     public AudioClip gameplaySong;
+
+    public AudioClip playerGameStart;
+    public AudioClip playerFootsteps;
+    public AudioClip playerBleedingOut;
 
     void OnValidate()
     {

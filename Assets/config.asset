@@ -22,6 +22,7 @@ MonoBehaviour:
   SpleenPrice: 100
   WinPrice: 100
   BleedDelay: 1
+  BleedSoundThreshold: 10
   MaxBlood: 100
   BrainBleed: 6
   HeartBleed: 5
@@ -42,9 +43,13 @@ MonoBehaviour:
   SpleenSprite: {fileID: 21300000, guid: 89ddf2094fe19a94480310f25e24051c, type: 3}
   NoSpleenSprite: {fileID: 21300000, guid: 2f26cd33bbb162745ace40219800e8f1, type: 3}
   introVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
+  titleVideo: {fileID: 32900000, guid: cc3902dfd03986b4e8a4038f4a2582d4, type: 3}
   deathVideo: {fileID: 32900000, guid: 7f4d7be4129482f47955926a68d2c1b1, type: 3}
   winVideo: {fileID: 32900000, guid: 48c2b9b42f7ddb04dafde52f67a6030f, type: 3}
   saleSFX: {fileID: 8300000, guid: 003b53913bd306545925906859eaae11, type: 3}
   brainSFX: {fileID: 8300000, guid: 7842c3ef97d351549b0609fba661dc03, type: 3}
   titleSong: {fileID: 8300000, guid: 7eb5551055a286840acedf641b4dec9a, type: 3}
   gameplaySong: {fileID: 8300000, guid: adba902a459e29d4aaed41d42ab20b07, type: 3}
+  playerGameStart: {fileID: 8300000, guid: 38eef04d112f5ba45a53d299478a826e, type: 3}
+  playerFootsteps: {fileID: 8300000, guid: ff5683ec6fb81d44c82121fcd5210660, type: 3}
+  playerBleedingOut: {fileID: 8300000, guid: fd095b4ae25c2fc4696a4abf2c561118, type: 3}
