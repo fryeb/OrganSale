@@ -45,7 +45,9 @@ MonoBehaviour:
   introVideo: {fileID: 32900000, guid: 39b6b82792abf2e44ae54714f3602e49, type: 3}
   titleVideo: {fileID: 32900000, guid: cc3902dfd03986b4e8a4038f4a2582d4, type: 3}
   deathVideo: {fileID: 32900000, guid: 7f4d7be4129482f47955926a68d2c1b1, type: 3}
+  deathTitleVideo: {fileID: 32900000, guid: 80ad1eda10dabf7498fe75f2371f7188, type: 3}
   winVideo: {fileID: 32900000, guid: 48c2b9b42f7ddb04dafde52f67a6030f, type: 3}
+  winTitleVideo: {fileID: 32900000, guid: 31bdcfe08f96b0c4a853ff672d6f77aa, type: 3}
   saleSFX: {fileID: 8300000, guid: 003b53913bd306545925906859eaae11, type: 3}
   brainSFX: {fileID: 8300000, guid: 7842c3ef97d351549b0609fba661dc03, type: 3}
   titleSong: {fileID: 8300000, guid: 7eb5551055a286840acedf641b4dec9a, type: 3}
