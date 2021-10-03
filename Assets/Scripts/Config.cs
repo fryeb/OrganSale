@@ -43,6 +43,8 @@ public class Config : ScriptableObject
 
     public AudioClip saleSFX;
     public AudioClip brainSFX;
+    public AudioClip titleSong;
+    public AudioClip gameplaySong;
 
     void OnValidate()
     {

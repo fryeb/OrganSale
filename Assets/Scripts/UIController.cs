@@ -4,6 +4,7 @@ using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+[RequireComponent(typeof(AudioSource))]
 public class UIController : MonoBehaviour
 {
     public static UIController instance;
@@ -25,6 +26,8 @@ public class UIController : MonoBehaviour
     public Image spleenImage;
     public VideoPlayer videoPlayer;
 
+    private AudioSource m_AudioSource;
+
     void Awake()
     {
         if (instance == null)
@@ -33,6 +36,12 @@ public class UIController : MonoBehaviour
             Debug.LogError("Multiple instances of UIController. There may be only one!!!");
 
         Debug.Assert(videoPlayer.playOnAwake);
+    }
+
+    void Start()
+    {
+        m_AudioSource = GetComponent<AudioSource>();
+        Debug.Assert(m_AudioSource.playOnAwake);
     }
 
     void SetPanelsActive(GameState state)
@@ -86,6 +95,18 @@ public class UIController : MonoBehaviour
             videoPlayer.gameObject.SetActive(false);
             SetPanelsActive(state);
         }
+
+        // Music
+        if (state == GameState.Main)
+        {
+            m_AudioSource.clip = config.gameplaySong;
+        } 
+        else
+        {
+            m_AudioSource.clip = config.titleSong;
+        }
+
+        if (!m_AudioSource.isPlaying) m_AudioSource.Play();
     }
 
     void LateUpdate()
