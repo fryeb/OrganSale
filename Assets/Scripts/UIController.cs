@@ -93,10 +93,13 @@ public class UIController : MonoBehaviour
         }
 
         if (state == GameState.Win || state == GameState.Dead) {
-            SetMessage("Press <space> to respawn.");
+            SetMessage("Press <space> to respawn. Press <esc> to Quit.");
             if (Input.GetKeyDown(KeyCode.Space))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
 
         // Music
         if (state == GameState.Main)
