@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: config
   m_EditorClassIdentifier: 
   MovementSpeed: 64
+  GameVolume: 0.8
+  TitleVolume: 1
   SaleDistance: 32
   BrainPrice: 100
   HeartPrice: 100

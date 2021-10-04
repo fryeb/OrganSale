@@ -105,10 +105,12 @@ public class UIController : MonoBehaviour
         if (state == GameState.Main)
         {
             m_AudioSource.clip = config.gameplaySong;
+            m_AudioSource.volume = config.GameVolume;
         } 
         else
         {
             m_AudioSource.clip = config.titleSong;
+            m_AudioSource.volume = config.TitleVolume;
         }
 
         if (!m_AudioSource.isPlaying) m_AudioSource.Play();

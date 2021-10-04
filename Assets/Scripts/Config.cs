@@ -6,6 +6,11 @@ public class Config : ScriptableObject
 {
     public float MovementSpeed = 16;
 
+    [Range(0, 1)]
+    public float GameVolume = 1;
+    [Range(0, 1)]
+    public float TitleVolume = 1;
+
     public float SaleDistance = 64;
     public int BrainPrice = 100;
     public int HeartPrice = 100;
