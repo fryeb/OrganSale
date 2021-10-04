@@ -27,7 +27,7 @@ public class WinController : MonoBehaviour
             }
             else
             {
-                UIController.SetMessage($"Press E to buy the game.");
+                UIController.SetMessage($"Press E to buy the game for ${config.WinPrice}.");
                 if (Input.GetKeyDown(KeyCode.E))
                     GameManager.instance.state = GameState.WinVideo;
             }

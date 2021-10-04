@@ -22,7 +22,7 @@ MonoBehaviour:
   LeftKidneyPrice: 100
   RightKidneyPrice: 100
   SpleenPrice: 100
-  WinPrice: 100
+  WinPrice: 1000
   BleedDelay: 1
   BleedSoundThreshold: 10
   MaxBlood: 100
