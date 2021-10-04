@@ -62,8 +62,8 @@ public class UIController : MonoBehaviour
         GameState state = GameManager.instance.state;
 
         playerName.text = player.transform.name;
-        playerBalance.text = $"Balance: ${player.money}";
-        playerBlood.text = $"Blood: {player.blood} / ${config.MaxBlood} (-{player.bleed})";
+        playerBalance.text = $"${player.money}";
+        playerBlood.text = $"{player.blood} / ${config.MaxBlood} (-{player.bleed})";
 
         brainImage.sprite = player.isAlive ? config.BrainSprite : config.NoBrainSprite;
         heartImage.sprite = player.hasHeart ? config.HeartSprite : config.NoHeartSprite;
