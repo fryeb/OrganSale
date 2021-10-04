@@ -194,6 +194,8 @@ public class PlayerController : MonoBehaviour
                 this.money += config.SpleenPrice;
             }
             PlaySoundEffect(config.saleSFX);
+        } else {
+            UIController.SetMessage($"{closestPlayer.name}: I don't want anything your selling");
         }
 
         // Background Sound Effect
